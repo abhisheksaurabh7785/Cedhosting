@@ -248,7 +248,4 @@
 				</div>
 		<!-- Wordpress Features -->
 			<?php require('footer.php') ?>
-			
-			
-</body>
-</html>
+	

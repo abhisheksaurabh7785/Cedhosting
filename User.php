@@ -23,7 +23,7 @@ class User{
 							echo '<script>alert("username or Mobile already exists!")</script>';
 						}else{
 							if(preg_match('/^([a-zA-Z]+\s?)*$/', $name)){
-								if (preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/", $email)) {
+								if (0) {
 									echo '<script>alert("invalid . character in email!")</script>';
 								}else{
 									// if (preg_match("/^(\d)\1{9}/", $mobile)) {
@@ -88,20 +88,29 @@ class User{
 			$_SESSION['USERID'] = $data['id'];
 			$_SESSION['NAME'] = $data['name'];
 			$_SESSION['EMAIL'] = $data['email'];
+			$_SESSION['MOBILE'] = $data['mobile'];
 			if ($_SESSION['ADMIN']==1) {
 				echo "hurray! login credentials matched!";
-				header('Location: ../admin.php');
+				header('Location: admin/index.php');
 			}
 			if ($_SESSION['ACTIVE']==1) {
 				if($_SESSION['ADMIN']==0){
-					echo "hurray! login credentials matched!";
-					header('Location: index.php');
+					echo "<script>";
+					echo "alert('Hurray! login credentials verified');";
+					echo "window.location.href='index.php';";
+					//header('Location: verification.php');
+					echo "</script>";
 			    }
 			}
 			if ($_SESSION['ACTIVE']==0) {
 				
-				echo "<script>alert('verify your email id!')</script>";
-				//header('Location: index.php');
+				echo "<script>";
+				echo "alert('verify your email id!');";
+				echo "window.location.href='verification.php';";
+				//header('Location: verification.php');
+				echo "</script>";
+
+				//header('Location: verification.php');
 			    
 			}
 
@@ -112,6 +121,18 @@ class User{
 			echo "<script>alert('email or password not matched!')</script>";
 		}
 
+	}
+	//giving activation to user
+	//UPDATE `user` SET `active`='1' WHERE `email`= 'abhisheksaurabh78663@gmail.com';
+	function activate($email,$conn){
+		$sql= "UPDATE `user` SET `active`='1' WHERE `email`= '$email'";
+		$result = $conn -> query($sql);
+		if($result){
+			$msg = "success";
+		}else{
+			$msg = "failure";
+		}
+		return $msg;
 	}
 }
 

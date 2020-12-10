@@ -52,5 +52,3 @@ require ('Dbcon.php');
 			</div>
 <!-- login -->
 <?php require('footer.php') ?>
-</body>
-</html>

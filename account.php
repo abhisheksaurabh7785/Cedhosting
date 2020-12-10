@@ -5,7 +5,7 @@ $dbconnection = new dbconnection();
 $dbconnection->conn;
 //$user = new User();
 if(isset($_POST['submit'])){
-	echo " u done it";
+	//echo " u done it";
   
   $password = $_POST['password'];
   $repassword =$_POST['repassword'];
@@ -16,16 +16,20 @@ if(isset($_POST['submit'])){
   $email=$_POST['email'];
   $ques = $_POST['squestion'];
   $answer = $_POST['sanswer'];
-  
+  //$_SESSION['Signupn']=$name;
+  //$_SESSION['Signupem']=$email;
+  	
+  	
 
   $User = new User();
   //$Dbcon=new dbconnection();
   $sql=$User-> register($name, $mobile, $email, $ques, $answer, $password, $repassword,$dbconnection-> conn);
   if($sql){
 
+
     echo '<script>'; 
     echo 'alert("Successfully Registered");'; 
-    echo 'window.location.href = "login.php";';
+    echo 'window.location.href = "verification.php";';
     echo '</script>';
     //echo "<script>alert('successfully registered')";
     //header('Location: login.php');
@@ -110,5 +114,3 @@ if(isset($_POST['submit'])){
 			</div>
 <!-- login -->
 				<?php require('footer.php') ?>
-</body>
-</html>
