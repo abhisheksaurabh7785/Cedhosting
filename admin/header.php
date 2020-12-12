@@ -1,3 +1,8 @@
+<?php
+require '../Dbcon.php';
+require '../User.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -46,13 +51,13 @@
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="createcategory.php" target="_blank">
                 <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Create products</span>
+                <span class="nav-link-text">Create Category</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="addproduct.php" target="_blank">
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Add products</span>
               </a>
@@ -424,7 +429,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="../logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>

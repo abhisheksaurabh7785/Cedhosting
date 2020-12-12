@@ -1,7 +1,8 @@
 <?php
 // session_start(); 
-require_once('User.php');
-require ('Dbcon.php');
+require 'header.php';
+//require_once('User.php');
+//require_once('Dbcon.php');
     // $dbcon = new dbconnection();
     // $dbcon->conn;
     if(isset($_POST['submit'])){
@@ -16,7 +17,7 @@ require ('Dbcon.php');
 
 ?>
 
-<?php require 'header.php'; ?>
+
 		<!---login--->
 			<div class="content">
 				<div class="main-1">

@@ -91,7 +91,8 @@ class User{
 			$_SESSION['MOBILE'] = $data['mobile'];
 			if ($_SESSION['ADMIN']==1) {
 				echo "hurray! login credentials matched!";
-				header('Location: admin/index.php');
+				echo "<script>window.location='admin/index.php';</script>";
+				//header('Location: admin/index.php');
 			}
 			if ($_SESSION['ACTIVE']==1) {
 				if($_SESSION['ADMIN']==0){
@@ -133,6 +134,51 @@ class User{
 			$msg = "failure";
 		}
 		return $msg;
+	}
+	//category table
+	function Category($name,$plink,$conn){
+
+		if($name==""||$plink==""){
+			echo '<script>alert("null not allowed")</script>';
+			return 1;
+		}
+		else{
+			$sql= "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `link`, `prod_available`, `prod_launch_date`) VALUES ( '1', '$name', '$plink', '1', NOW())";
+			$result=$conn->query($sql);
+			return 1;
+		}
+	}
+	//delete category
+	function deleteCategory($id,$conn){
+
+		$sql1="DELETE  FROM `tbl_product` WHERE `id`= '$id'";
+		$result=$conn->query($sql1);
+		return $result;
+	}
+	function categorytable($name,$plink,$conn){
+
+		$sql1="SELECT * FROM `tbl_product`WHERE `prod_name`!='Hosting'";
+		$result=$conn->query($sql1);
+		return $result;
+	}
+	function editCategory($id,$conn){
+
+		$sql1="SELECT * FROM `tbl_product` WHERE `id`= '$id'";
+		$result=$conn->query($sql1);
+		return $result;
+	}
+	function updateCategory($id,$name,$link,$conn){
+
+		$sql1="UPDATE `tbl_product` SET `prod_name`='$name', `link`='$link' WHERE `id`='$id'";
+		$result=$conn->query($sql1);
+		
+		return $result;
+	}
+	//fetching category of parent hosting
+	function importcategory($conn){
+		$sql = "SELECT * FROM `tbl_product` WHERE `prod_parent_id`='1'";
+		$result = $conn->query($sql);
+		return $result;
 	}
 }
 

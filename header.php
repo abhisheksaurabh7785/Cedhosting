@@ -1,9 +1,7 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+require_once('Dbcon.php');
+include ('User.php'); 
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -101,10 +99,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
 									<ul class="dropdown-menu">
-										<li><a href="linuxhosting.php">Linux hosting</a></li>
+										<!-- <li><a href="linuxhosting.php">Linux hosting</a></li>
 										<li><a href="wordpresshosting.php">WordPress Hosting</a></li>
 										<li><a href="windowshosting.php">Windows Hosting</a></li>
-										<li><a href="cmshosting.php">CMS Hosting</a></li>
+										<li><a href="cmshosting.php">CMS Hosting</a></li> -->
+										<li><a href="<?php
+										
+                                        $user =new User();
+                                        $dbcon =new dbconnection();
+                                        $data = $user-> importcategory($dbcon-> conn);
+                                        foreach($data as $key=>$value){
+                                        	echo('<li href="'.$value['link'].'">'.$value['prod_name'].'</option>');
+                                        }
+										?>"></a></li>
 									</ul>			
 								</li>
 								<li><a href="codes.php">Pricing</a></li>
