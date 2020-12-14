@@ -12,7 +12,7 @@ $sql=$User->editCategory($id,$Dbcon->conn);
 foreach($sql as $key)
 {
 $productname=$key['prod_name'];
-$prolink=$key['link'];
+$prolink=$key['html'];
 
 // echo $productname;
 // echo $prolink;
@@ -135,7 +135,7 @@ if(isset($_POST['update']))
                     </td>
                     <td>
                       <div class="avatar-group">
-                        <?php echo $key['link'] ?>
+                        <?php echo $key['html'] ?>
                        
                       </div>
                     </td>
@@ -166,7 +166,7 @@ if(isset($_POST['update']))
 
                        
                         <a href="editCreatecategory.php?action=1&id=<?php echo  $key['id'];?>" class="showtable">Edit</a>
-                        <a onclick="javascript: return confirm('are you sure?');" href="Createcategory.php?id=<?php echo  $key['id'];?>" class="showtable">Delete</a>
+                        <a onclick="javascript: return confirm('are you sure?');" href="createcategory.php?id=<?php echo  $key['id'];?>" class="showtable">Delete</a>
                         </span>
                         <div>
                           

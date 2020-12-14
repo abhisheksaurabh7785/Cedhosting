@@ -116,7 +116,7 @@ if(isset($_GET['id']))
                     </td>
                     <td>
                       <div class="avatar-group">
-                        <?php echo $key['link'] ?>
+                        <?php echo $key['html'] ?>
                        
                       </div>
                     </td>

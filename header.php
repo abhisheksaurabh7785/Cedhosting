@@ -109,9 +109,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         $dbcon =new dbconnection();
                                         $data = $user-> importcategory($dbcon-> conn);
                                         foreach($data as $key=>$value){
-                                        	echo('<li href="'.$value['link'].'">'.$value['prod_name'].'</option>');
+                                        	echo('<li href="'.$value['html'].'">'.$value['prod_name'].'</option>');
                                         }
-										?>"></a></li>
+										?></a></li>
 									</ul>			
 								</li>
 								<li><a href="codes.php">Pricing</a></li>

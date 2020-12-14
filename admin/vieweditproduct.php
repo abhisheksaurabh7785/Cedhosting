@@ -1,12 +1,33 @@
 <?php 
-//include('../Dbcon.php');
-//include('../User.php');
- include 'header.php';
-//$Dbcon = new dbconnection();
+include 'header.php';
+$Dbcon = new dbconnection();
+$id=isset($_GET['id'])?$_GET['id']:'';
+//echo $id;
+$user=new User();
+$sql=$user-> vieweditfetch($id,$Dbcon-> conn);
+//echo $sql['prod_name'];
+foreach($sql as $key)
+{
 
- //echo "jai jawan";
- if (isset($_POST['submit'])) {
- 	$productcat = $_POST['productcat'];
+    $category=$key['prod_name'];
+    
+    // echo $category;
+    $url=$key['html'];
+    $b=json_decode ($key['description']);
+    $webspace=$b->A;
+    //echo $webspace;
+    $bandwidth=$b->B;
+    $domain=$b->C;
+    $language=$b->D;
+    $mailbox=$b->E;
+    $month=$key['mon_price'];
+    $annual=$key['annual_price'];
+    $sku=$key['sku'];
+
+   
+}
+if(isset($_POST['submit'])){
+	$productcat = $_POST['productcat'];
  	$productnam = $_POST['productnam'];
  	$pageurl = $_POST['pageurl'];
  	$monthlypri=$_POST['monthlypri'];
@@ -18,29 +39,22 @@
  	$language=$_POST['language'];
  	$mailbox=$_POST['mailbox'];
  	
- 	echo $productcat; 
- 	echo $productnam; 
- 	echo $sku; 
- 	echo $bandwidth;
+ 	 //echo $productcat; 
+ 	// echo $productnam; 
+ 	// echo $sku; 
+ 	// echo $bandwidth;
  	$a = array("A"=>$webspace, "B"=>$bandwidth, "C"=>$domain,"D"=>$language,"E"=>$mailbox);
        json_encode($a);
-
- 	$Dbcon = new dbconnection();
- 	$user=new User();
- 	$sql= $user -> insertaddproduct($productcat,$productnam,$pageurl,$monthlypri,$annualpri,$sku,json_encode($a),$Dbcon-> conn);
- }
- if(isset($_GET['id'])){
-  $id=$_GET['id'];
-  $Dbcon = new dbconnection();
-  $user2=new User();
-  $sql=$user2 -> deleteproduct($id,$Dbcon-> conn);
- }
- // if(isset($_GET['id'])){
- //  $id=$_GET['id'];
- //  $Dbcon = new dbconnection();
- //  $user2=new User();
- //  $sql=$user2 -> deleteproduct($id,$Dbcon-> conn);
- // }
+      // $Dbcon = new dbconnection();
+ 	   $user1=new User();
+ 	   $sql1= $user1 -> updateproduct($id,$productcat,$productnam,$pageurl,$monthlypri,$annualpri,$sku,json_encode($a),$Dbcon-> conn);
+ 	   if($sql1=true){
+ 	   	echo '<script>alert("successfully updated record");</script>';
+ 	   	// echo "alert('successfully updated record');";
+ 	   	// echo "</script>";
+ 	   }
+}
+//print_r($sql);
 ?>
 <div class="container mt--9 p-7">
 
@@ -56,7 +70,7 @@
                 </div>
               </div> -->
               <div class="card-body">
-                <form action="addproduct.php" method="POST">
+                <form action="" method="POST">
                   <h6 class="heading-small text-muted mb-4">ENTER PRODUCT DETAILS</h6>
                   <div class="pl-lg-4">
                     <div class="row">
@@ -65,18 +79,26 @@
                           <label class="form-control-label" for="input-username">Select Product Category</label>
                           <!-- <input type="text" id="input-username" class="form-control" placeholder="Select Category" > -->
                           <select name="productcat" class="form-control">
-                          	<option value="">Select Category</option>
-                          	<?php
-                          	$dbcon = new dbconnection();
-                          	$user = new User();
-                          	$sql = $user -> importcategory($dbcon-> conn) ;
-
-                          	foreach($sql as $key=>$value){?>
+                          	<option value="0" selected><?php
+				                    $User=new User();
+				                    $Dbcon=new dbconnection();
+				                    
+				                   $sql=$User->parentname($category,$Dbcon->conn);
+				               echo $sql;
+				                   ?>
+				                  </option>
+				                <?php
+				                        $User=new User();
+				                           $Dbcon=new dbconnection();
+				                         $sql=$User->importcategory($Dbcon->conn);
+				                          // print_r($sql);
+				                     foreach($sql as $key=>$value){?>
                           		<option value="<?php echo  $value['id'] ?>"><?php echo $value['prod_name'] ?></option>
                           		<!-- echo ('<option value="'.$value['id'].'">'.$value['prod_name'].'</option>'); -->
                           	<?php }
 
                           	?>
+                
                           	
                           </select>
                         </div>
@@ -84,7 +106,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Enter Product Name</label>
-                          <input type="text" id="input-email" class="form-control" placeholder="Enter Product Name" name="productnam">
+                          <input type="text" id="input-email" class="form-control" placeholder="<?php echo $category ?>" name="productnam">
                         </div>
                       </div>
                     </div>
@@ -92,7 +114,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Page URL</label>
-                          <input type="text" id="input-first-name" class="form-control" name="pageurl" placeholder="Page URL" >
+                          <input type="text" id="input-first-name" class="form-control" name="pageurl" placeholder="<?php echo $url ?>" >
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -112,13 +134,13 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Enter Monthly Price</label>
-                          <input type="text" id="input-username" name="monthlypri" class="form-control" placeholder="ex: 23" >
+                          <input type="text" id="input-username" name="monthlypri" class="form-control" placeholder="<?php echo $month ?>" >
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Enter Annual Price</label>
-                          <input type="text" id="input-email" name="annualpri" class="form-control" placeholder="ex: 23">
+                          <input type="text" id="input-email" name="annualpri" class="form-control" placeholder="<?php echo $annual ?>">
                         </div>
                       </div>
                     </div>
@@ -126,7 +148,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">SKU</label>
-                          <input type="text" id="input-first-name" name="sku" class="form-control" placeholder="ex: 23" >
+                          <input type="text" id="input-first-name" name="sku" class="form-control" placeholder="<?php echo $sku ?>" >
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -145,14 +167,14 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Web Space(in GB)</label>
-                          <input type="text" id="input-username" class="form-control" placeholder="Web Space(in GB)" name="webspace">
+                          <input type="text" id="input-username" class="form-control" placeholder="<?php echo $webspace ?>" name="webspace">
                           <small class="text-muted">ENTER 0.5 FOR 512 MB</small>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Bandwidth(in GB)</label>
-                          <input type="text" id="input-email" class="form-control" name="bandwidth" placeholder="Bandwidth(in GB)">
+                          <input type="text" id="input-email" class="form-control" name="bandwidth" placeholder="<?php echo $bandwidth ?>">
                           <small class="text-muted">ENTER 0.5 FOR 512 MB</small>
                         </div>
                       </div>
@@ -161,14 +183,14 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Free Domain</label>
-                          <input type="text" id="input-first-name" name="domain" class="form-control" placeholder="Free Domain" value="Lucky">
+                          <input type="text" id="input-first-name" name="domain" class="form-control" placeholder="<?php echo $domain ?>" >
                           <small class="text-muted">ENTER 0 IF NO DOMAIN AVAILABLE IN THIS SERVICE</small>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-last-name">Language/Technology Support</label>
-                          <input type="text" id="input-last-name" name="language" class="form-control" placeholder="Language/Technology Support" value="Jesse">
+                          <input type="text" id="input-last-name" name="language" class="form-control" placeholder="<?php echo $language ?>" >
                           <small class="text-muted">SEPARATE BY(,) EX: PHP,MYSQL</small>
                         </div>
                       </div>
@@ -177,7 +199,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Mailbox</label>
-                          <input type="text" id="input-first-name" name="mailbox" class="form-control" placeholder="Mailbox	" value="Lucky">
+                          <input type="text" id="input-first-name" name="mailbox" class="form-control" placeholder="<?php echo $mailbox ?>" >
                           <small class="text-muted">ENTER NUMBER OF MAILBOX WILL BE PROVIDED,ENTER 0 IF NONE</small>
                         </div>
                       </div>
@@ -190,7 +212,7 @@
                     </div>
                   </div>
                   <div class="text-center p-5">
-                      <div ><input type="submit" name="submit" value="Create New" class="btn btn-primary"></div>
+                      <div ><input type="submit" name="submit" value="Update" class="btn btn-primary"></div>
                   </div>
                 </form>
               </div>
