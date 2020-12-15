@@ -50,6 +50,7 @@ if(isset($_POST['submit'])){
  	   $sql1= $user1 -> updateproduct($id,$productcat,$productnam,$pageurl,$monthlypri,$annualpri,$sku,json_encode($a),$Dbcon-> conn);
  	   if($sql1=true){
  	   	echo '<script>alert("successfully updated record");</script>';
+ 	   	echo '<script>window.location="viewproduct.php"</script>';
  	   	// echo "alert('successfully updated record');";
  	   	// echo "</script>";
  	   }

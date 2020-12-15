@@ -26,6 +26,8 @@ require '../User.php';
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+   <!-- jQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -51,25 +53,25 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="createcategory.php" target="_blank">
+              <a class="nav-link" href="createcategory.php" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Create Category</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addproduct.php" target="_blank">
+              <a class="nav-link" href="addproduct.php" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Add products</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewproduct.php" target="_blank">
+              <a class="nav-link" href="viewproduct.php" >
                 <i class="ni ni-ui-04"></i>
                 <span class="nav-link-text">View Products</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" >
                 <i class="ni ni-chart-pie-35"></i>
                 <span class="nav-link-text">Create new offers</span>
               </a>
@@ -84,25 +86,25 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Pending Orders</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Completed Orders</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" >
                 <i class="ni ni-ui-04"></i>
                 <span class="nav-link-text">Cancelled Orders</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" >
                 <i class="ni ni-chart-pie-35"></i>
                 <span class="nav-link-text">Generate Orders</span>
               </a>
@@ -117,13 +119,13 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Active Services</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Expired Services</span>
               </a>
@@ -138,13 +140,13 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">All Users</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Create New User</span>
               </a>
@@ -159,13 +161,13 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Add New Blog</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">View All Blog</span>
               </a>
@@ -180,19 +182,19 @@ require '../User.php';
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" >
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Update Company Info</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Change Security Question</span>
               </a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" >
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Change Password</span>
               </a>

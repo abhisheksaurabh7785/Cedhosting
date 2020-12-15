@@ -24,7 +24,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 			                <thead class="thead-light">
 			                    <tr>
 				                    <!-- <th scope="col" class="sort" data-sort="id">Product ID</th> -->
-				                    <th scope="col" class="sort" data-sort="budget">Product Parent Name</th>
+				                    <th scope="col" class="sort" data-sort="budget">Product Name</th>
 				                    <th scope="col" class="sort" data-sort="status">Link</th>
 				                   
 				                    <th scope="col" class="sort" data-sort="completion">Product Availability</th>
@@ -76,7 +76,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 						                        <?php $key['prod_available'];
 						                         if($key['prod_available']=='1')
 						                         {
-						                           echo "IS AVAILABLE";
+						                           echo "AVAILABLE";
 						                         }
 						                         else {
 						                           echo "not available";
@@ -184,10 +184,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 		      </div>
 		  </div>
 	</div>	
-	<!-- MODAL -->
-
-
-	<!-- //MODAL -->
+	
 
 </div>	
 <div class="mt-9">

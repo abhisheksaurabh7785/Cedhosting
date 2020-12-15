@@ -56,7 +56,7 @@
                 </div>
               </div> -->
               <div class="card-body">
-                <form action="addproduct.php" method="POST">
+                <form action="addproduct.php" method="POST" id="form">
                   <h6 class="heading-small text-muted mb-4">ENTER PRODUCT DETAILS</h6>
                   <div class="pl-lg-4">
                     <div class="row">
@@ -64,7 +64,7 @@
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Select Product Category</label>
                           <!-- <input type="text" id="input-username" class="form-control" placeholder="Select Category" > -->
-                          <select name="productcat" class="form-control">
+                          <select name="productcat" class="form-control" id="category">
                           	<option value="">Select Category</option>
                           	<?php
                           	$dbcon = new dbconnection();
@@ -85,6 +85,7 @@
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Enter Product Name</label>
                           <input type="text" id="input-email" class="form-control" placeholder="Enter Product Name" name="productnam">
+                          <div class="invalid-feedback">invalid</div>
                         </div>
                       </div>
                     </div>
@@ -112,13 +113,15 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Enter Monthly Price</label>
-                          <input type="text" id="input-username" name="monthlypri" class="form-control" placeholder="ex: 23" >
+                          <input type="text" id="monthlyprice" name="monthlypri" class="form-control" placeholder="ex: 23" maxlength="15" >
+                          <div class="invalid-feedback">invalid</div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Enter Annual Price</label>
-                          <input type="text" id="input-email" name="annualpri" class="form-control" placeholder="ex: 23">
+                          <input type="text" id="annualprice" name="annualpri" class="form-control" placeholder="ex: 23" maxlength="15">
+                          <div class="invalid-feedback">invalid</div>
                         </div>
                       </div>
                     </div>
@@ -126,7 +129,8 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">SKU</label>
-                          <input type="text" id="input-first-name" name="sku" class="form-control" placeholder="ex: 23" >
+                          <input type="text" id="sku" name="sku" class="form-control" placeholder="ex: 23" >
+                          <div class="invalid-feedback">invalid</div>
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -145,14 +149,16 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Web Space(in GB)</label>
-                          <input type="text" id="input-username" class="form-control" placeholder="Web Space(in GB)" name="webspace">
+                          <input type="text" id="webspace" class="form-control" placeholder="Web Space(in GB)" name="webspace" maxlength="5">
+                          <div class="invalid-feedback">invalid</div>
                           <small class="text-muted">ENTER 0.5 FOR 512 MB</small>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Bandwidth(in GB)</label>
-                          <input type="text" id="input-email" class="form-control" name="bandwidth" placeholder="Bandwidth(in GB)">
+                          <input type="text" id="bandwidth" class="form-control" name="bandwidth" placeholder="Bandwidth(in GB)" maxlength="5">
+                          <div class="invalid-feedback">invalid</div>
                           <small class="text-muted">ENTER 0.5 FOR 512 MB</small>
                         </div>
                       </div>
@@ -161,14 +167,16 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Free Domain</label>
-                          <input type="text" id="input-first-name" name="domain" class="form-control" placeholder="Free Domain" value="Lucky">
+                          <input type="text" id="domain" name="domain" class="form-control" placeholder="Free Domain" >
+                          <div class="invalid-feedback">invalid</div>
                           <small class="text-muted">ENTER 0 IF NO DOMAIN AVAILABLE IN THIS SERVICE</small>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-last-name">Language/Technology Support</label>
-                          <input type="text" id="input-last-name" name="language" class="form-control" placeholder="Language/Technology Support" value="Jesse">
+                          <input type="text" id="language" name="language" class="form-control" placeholder="Language/Technology Support" >
+                          <div class="invalid-feedback">invalid</div>
                           <small class="text-muted">SEPARATE BY(,) EX: PHP,MYSQL</small>
                         </div>
                       </div>
@@ -177,7 +185,8 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Mailbox</label>
-                          <input type="text" id="input-first-name" name="mailbox" class="form-control" placeholder="Mailbox	" value="Lucky">
+                          <input type="text" id="mailbox" name="mailbox" class="form-control" placeholder="Mailbox	" >
+                          <div class="invalid-feedback">invalid</div>
                           <small class="text-muted">ENTER NUMBER OF MAILBOX WILL BE PROVIDED,ENTER 0 IF NONE</small>
                         </div>
                       </div>
@@ -190,13 +199,243 @@
                     </div>
                   </div>
                   <div class="text-center p-5">
-                      <div ><input type="submit" name="submit" value="Create New" class="btn btn-primary"></div>
+                      <div ><input type="submit" id="submit" name="submit" value="Create New" class="btn btn-primary"></div>
                   </div>
                 </form>
               </div>
   </div>
 </div>
 <!-- table -->
+<!-- script -->
+
+  <script type="text/javascript">
+    $(document).ready(function (){
+      //submit button disable
+      $('#submit').prop('disabled',true);
+      //var declaration
+      var prodname = /^(?![0-9]*$)[a-zA-Z0-9]+$/;
+      var monthlypri  = /^[0-9]*\.?[0-9]*$/;
+      var sku = /^[a-zA-Z0-9#](?:[a-zA-Z0-9_-]*[a-zA-Z0-9])?$/;
+      var domain = /^([0-9]+|[a-zA-Z]+)$/;
+      var lang = /^(([a-zA-Z]+|[a-zA-Z0-9]+)|([a-zA-Z]+[,]|[a-zA-Z0-9]+[,]))$/;
+      //category validation
+      $("#category").on('blur',function(){
+          
+      });
+      //regex + EMPTY validation
+      //regex product name validation
+      $("#input-email").on('blur',function(){
+        if($('#input-email').val()==''){
+            //alert('please fill product name');
+            $('#input-email').addClass('is-invalid');
+            $('#input-email').removeClass('is-valid');
+        }else if(!(prodname.test($('#input-email').val()))){
+            $('#input-email').addClass('is-invalid');
+            $('#input-email').removeClass('is-valid');
+        }else{
+          $('#input-email').addClass('is-valid');
+          $('#input-email').removeClass('is-invalid');
+        }
+      });
+      //monthly price validation
+      $("#monthlyprice").on('blur',function(){
+        if($('#monthlyprice').val()==''){
+            //alert('please fill product name');
+            $('#monthlyprice').addClass('is-invalid');
+            $('#monthlyprice').removeClass('is-valid');
+        }else if(!(monthlypri.test($('#monthlyprice').val()))){
+            $('#monthlyprice').addClass('is-invalid');
+            $('#monthlyprice').removeClass('is-valid');
+        }else{
+          $('#monthlyprice').addClass('is-valid');
+          $('#monthlyprice').removeClass('is-invalid');
+        }
+      });
+      //annual price validation
+      $("#annualprice").on('blur',function(){
+        if($('#annualprice').val()==''){
+            //alert('please fill product name');
+            $('#annualprice').addClass('is-invalid');
+            $('#annualprice').removeClass('is-valid');
+        }else if(!(monthlypri.test($('#annualprice').val()))){
+            $('#annualprice').addClass('is-invalid');
+            $('#annualprice').removeClass('is-valid');
+        }else{
+          $('#annualprice').addClass('is-valid');
+          $('#annualprice').removeClass('is-invalid');
+        }
+      });
+      //sku validation
+      $("#sku").on('blur',function(){
+        if($('#sku').val()==''){
+            //alert('please fill product name');
+            $('#sku').addClass('is-invalid');
+            $('#sku').removeClass('is-valid');
+        }else if(!(sku.test($('#sku').val()))){
+            $('#sku').addClass('is-invalid');
+            $('#sku').removeClass('is-valid');
+        }else{
+          $('#sku').addClass('is-valid');
+          $('#sku').removeClass('is-invalid');
+        }
+      });
+      //webspace validation
+      $("#webspace").on('blur',function(){
+        if($('#webspace').val()==''){
+            //alert('please fill product name');
+            $('#webspace').addClass('is-invalid');
+            $('#webspace').removeClass('is-valid');
+        }else if(!(monthlypri.test($('#webspace').val()))){
+            $('#webspace').addClass('is-invalid');
+            $('#webspace').removeClass('is-valid');
+        }else{
+          $('#webspace').addClass('is-valid');
+          $('#webspace').removeClass('is-invalid');
+        }
+      });
+      //bandwidth validation
+      $("#bandwidth").on('blur',function(){
+        if($('#bandwidth').val()==''){
+            //alert('please fill product name');
+            $('#bandwidth').addClass('is-invalid');
+            $('#bandwidth').removeClass('is-valid');
+        }else if(!(monthlypri.test($('#bandwidth').val()))){
+            $('#bandwidth').addClass('is-invalid');
+            $('#bandwidth').removeClass('is-valid');
+        }else{
+          $('#bandwidth').addClass('is-valid');
+          $('#bandwidth').removeClass('is-invalid');
+        }
+      });
+      //domain validation
+      $("#domain").on('blur',function(){
+        if($('#domain').val()==''){
+            //alert('please fill product name');
+            $('#domain').addClass('is-invalid');
+            $('#domain').removeClass('is-valid');
+        }else if(!(domain.test($('#domain').val()))){
+            $('#domain').addClass('is-invalid');
+            $('#domain').removeClass('is-valid');
+        }else{
+          $('#domain').addClass('is-valid');
+          $('#domain').removeClass('is-invalid');
+        }
+      });
+      //language validation
+      $("#language").on('blur',function(){
+        if($('#language').val()==''){
+            //alert('please fill product name');
+            $('#language').addClass('is-invalid');
+            $('#language').removeClass('is-valid');
+        }else if(!(lang.test($('#language').val()))){
+            $('#language').addClass('is-invalid');
+            $('#language').removeClass('is-valid');
+        }else{
+          $('#language').addClass('is-valid');
+          $('#language').removeClass('is-invalid');
+        }
+      });
+      //mailbox validation
+      $("#mailbox").on('blur',function(){
+        if($('#mailbox').val()==''){
+            //alert('please fill product name');
+            $('#mailbox').addClass('is-invalid');
+            $('#mailbox').removeClass('is-valid');
+        }else if(!(domain.test($('#mailbox').val()))){
+            $('#mailbox').addClass('is-invalid');
+            $('#mailbox').removeClass('is-valid');
+        }else{
+          $('#mailbox').addClass('is-valid');
+          $('#mailbox').removeClass('is-invalid');
+        }
+      });
+      //empty field
+      
+      //submit button enabled when all field are filled
+      $('#form').keyup(function(){
+        if($('#category').val()!='' && $('#input-email').val()!='' && $('#monthlyprice').val()!='' && $('#annualprice').val()!='' && $('#sku').val()!='' && $('#webspace').val()!='' && $('#bandwidth').val()!='' && $('#domain').val()!='' && $('#language').val()!='' && $('#mailbox').val()!=''){
+            $('#submit').attr('disabled', false);
+        }
+            //empty field validation
+        // else if($('#category').val()==''){
+        //     alert('please fill category');
+        //     //return false;
+        // } 
+        
+        // else if($('#monthlyprice').val()==''){
+        //     alert('please fill monthly price');
+        //     //return true;
+        // }
+        // else if($('#annualprice').val()==''){
+        //     alert('please fill annual price');
+        //     //return true;
+        // }
+        // else if($('#sku').val()==''){
+        //     alert('please fill sku');
+        //     //return true;
+        // }
+        // else if($('#webspace').val()==''){
+        //     //alert('please fill webspace');
+        //     //return true;
+        // }
+        // else if($('#bandwidth').val()==''){
+        //     alert('please fill bandwidth');
+        //     //return true;
+        // }
+        // else if($('#domain').val()==''){
+        //     alert('please fill domain');
+        //     //return true;
+        // }
+        // else if($('#language').val()==''){
+        //     alert('please fill language');
+        //     //return true;
+        // }
+        // else if($('#mailbox').val()==''){
+        //     alert('please fill mailbox');
+        //     //return true;
+        // }
+        //regex monthly price  validation
+        // else if(!(montlypri.test($('#monthlyprice').val()))){
+        //   alert('Enter only valid numeric character in monthly price');
+        //   return false;
+        // }
+        //regex monthly price  validation
+        // else if(!(montlypri.test($('#annualprice').val()))){
+        //   alert('Enter only valid numeric character in monthly price');
+        //   return false;
+        // }
+
+        else
+        {
+            $('#submit').attr('disabled', true);        
+        }
+      });
+      
+    
+     });
+  </script>
+
+
+  <!-- //script -->
 
 
 <?php include 'footer.php'; ?>
+<!-- //       validate();
+    //       $('#inputName, #inputEmail, #inputTel').change(validate);
+    //   });
+
+    //   function validate(){
+    //       if ($('#category').val().length   >   0   &&
+    //           $('#input-first-name').val().length  >   0   &&
+    //           $('#input-email').val().length    >   0) {
+    //           $("input[type=submit]").prop("disabled", false);
+    //       }
+    //       else {
+    //           $("input[type=submit]").prop("disabled", true);
+    //       } -->
+    <!--submit disable // if($('#category').val()=='' || $('#input-email').val()=='' || $('#monthlyprice').val()=='' || $('#annualprice').val()=='' || $('#sku').val()=='' || $('#webspace').val()=='' || $('#bandwidth').val()=='' || $('#domain').val()=='' || $('#language').val()=='' || $('#mailbox').val()==''){
+      //   $('#submit').prop('disabled',true);
+      // }
+      // if($('#category').val()!='' && $('#input-email').val()!='' && $('#monthlyprice').val()!='' && $('#annualprice').val()!='' && $('#sku').val()!='' && $('#webspace').val()!='' && $('#bandwidth').val()!='' && $('#domain').val()!='' && $('#language').val()!='' && $('#mailbox').val()!=''){
+      //   $('#submit').prop('enabled',true);
+      // } -->

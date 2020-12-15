@@ -46,9 +46,12 @@
   <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- map page footer addition -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+ 
+
 </body>
 
 </html>
