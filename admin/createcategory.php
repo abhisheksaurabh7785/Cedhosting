@@ -61,7 +61,7 @@ if(isset($_GET['id']))
             </div>
             <!-- Light table -->
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="product">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col" class="sort" data-sort="id">id</th>
@@ -175,4 +175,12 @@ if(isset($_GET['id']))
 <?php }?>
 </tbody>
 </table>
-            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+            <?php require 'footer.php';?>
+          </div>

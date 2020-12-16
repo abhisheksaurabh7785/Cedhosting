@@ -86,16 +86,18 @@ class User{
 			$_SESSION['ADMIN']= $data['is_admin'];
 			$_SESSION['ACTIVE']= $data['active'];
 			$_SESSION['USERID'] = $data['id'];
-			$_SESSION['NAME'] = $data['name'];
+			
 			$_SESSION['EMAIL'] = $data['email'];
 			$_SESSION['MOBILE'] = $data['mobile'];
 			if ($_SESSION['ADMIN']==1) {
+				$_SESSION['NAME'] = $data['name'];
 				echo "hurray! login credentials matched!";
 				echo "<script>window.location='admin/index.php';</script>";
 				//header('Location: admin/index.php');
 			}
 			if ($_SESSION['ACTIVE']==1) {
 				if($_SESSION['ADMIN']==0){
+					$_SESSION['NAME'] = $data['name'];
 					echo "<script>";
 					echo "alert('Hurray! login credentials verified');";
 					echo "window.location.href='index.php';";
@@ -300,7 +302,26 @@ class User{
 		  }
 		  return $result;
 			}
-
+	 //importhosting data on hosting
+	function importhosting($id,$conn){
+		$row = array();
+		$sql="SELECT * FROM `tbl_product` WHERE `id`='$id'";
+		$result=$conn->query($sql);
+		while($data=mysqli_fetch_assoc($result)){
+			$row[]=$data;
+		}
+		return $row;
+	}
+	 //importhostingprice data on hosting
+	function importhostingprice($id,$conn){
+		$row = array();
+		$sql="SELECT a.*,b.* FROM `tbl_product` as a INNER JOIN `tbl_product_description` as b on a.`id`=b.`prod_id` WHERE a.`prod_parent_id`= '$id'";
+		$result=$conn->query($sql);
+		while($data=mysqli_fetch_assoc($result)){
+			$row[]=$data;
+		}
+		return $row;
+	}
 }
 
 ?>

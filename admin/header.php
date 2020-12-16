@@ -28,6 +28,10 @@ require '../User.php';
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
    <!-- jQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"></script> -->
+        <script src="adminscript.js"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -44,7 +48,20 @@ require '../User.php';
       <div class="navbar-inner">
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Divider -->
+          <hr class="my-3">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="examples/dashboard.html">
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+            </li>
+          </ul>
+          
+          <!-- Heading -->
               <!-- Divider -->
+
           <hr class="my-3">
           <!-- Heading -->
           <h6 class="navbar-heading p-0 text-muted">
@@ -431,10 +448,16 @@ require '../User.php';
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../logout.php" class="dropdown-item">
+                <?php if(isset($_SESSION['NAME'])){ 
+                 echo '<a href="../logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
-                </a>
+                </a>';}else {
+                  echo '<a href="../login.php" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Login</span>
+                </a>';
+                }?>
               </div>
             </li>
           </ul>

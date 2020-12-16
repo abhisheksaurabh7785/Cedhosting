@@ -1,7 +1,7 @@
 <?php
 // session_start();
 // require 'Dbcon.php';
-require 'User.php';
+//require 'User.php';
 require 'header.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -10,7 +10,7 @@ require '/home/cedcoss/vendor/autoload.php';
 
 if (isset($_SESSION['EMAIL'])) {
 	$email= $_SESSION['EMAIL'];
-	$name= $_SESSION['NAME'];
+	$userid= $_SESSION['USERID'];
 
 	$mail = new PHPMailer();
 
@@ -20,9 +20,9 @@ if (isset($_SESSION['EMAIL'])) {
 	   $otp=rand(100000,999999);
 	   $_SESSION['otp']=$otp;
 	   $mail->setFrom('abhisheksaurabh78663@gmail.com', 'CedHosting ');
-	   $mail->addAddress($email, $name);
+	   $mail->addAddress($email, $userid);
 	   $mail->Subject = 'CedHosting Account Verification';
-	   $mail->Body = 'Hi '.$name.',Your one time otp for account verification is '.$otp;
+	   $mail->Body = 'Hi '.$userid.',Your one time otp for account verification is '.$otp;
 	   $mail->isSMTP(true);
 	   $mail->Host = 'smtp.gmail.com';
 	   $mail->SMTPAuth = TRUE;
@@ -67,7 +67,7 @@ if (isset($_SESSION['EMAIL'])) {
 								<div class="col-md-5 login-right">
 									<h3>Verification through E-mail id</h3>
 									<p>If you have an account with us, please log in.</p>
-									<form action="loginsubmit.php" method="POST">
+									<form action="loginsubmit.php" method="GET">
 									  <div>
 										<span>Email Address<label>*</label></span>
 										<input type="text" name="email" value="<?php 

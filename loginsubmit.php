@@ -1,9 +1,9 @@
 <?php
 require 'Dbcon.php';
 require 'User.php';
-if (isset($_POST['submit'])) {
-	$otp = $_POST['otp'];
-	$email = $_POST['email'];
+if (isset($_GET['submit'])) {
+	$otp = $_GET['otp'];
+	$email = $_GET['email'];
 	if ($_SESSION['otp']==$otp) {
 		$User=new User();
         $Dbcon=new dbconnection();

@@ -1,5 +1,12 @@
 <?php 
 include 'header.php';
+if (isset($_SESSION['NAME'])) {
+    if ($_SESSION['ADMIN']==0) {
+        echo "<script> window.location='../index.php'; </script>";
+
+    }
+}
+
 //echo "hello" ;
 ?>
 

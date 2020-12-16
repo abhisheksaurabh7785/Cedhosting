@@ -6,9 +6,12 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
   $Dbcon = new dbconnection();
   $user2=new User();
   $sql=$user2 -> deleteproduct($id,$Dbcon-> conn);
+  if($sql==true){
+  	echo "<script>alert('successfully deleted record')</script>";
+  }
  }
 ?>
-<div class="container  mt--9 p-5">
+<!-- <div class="container  mt--9 p-5"> -->
 <!-- table -->
 	<div class="container-fluid p-5">
 	    <div class="row">
@@ -20,7 +23,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 		            </div>
 		            <!-- Light table -->
 		            <div class="table-responsive">
-		                <table class="table align-items-center table-flush">
+		                <table class="table align-items-center table-flush" id="product">
 			                <thead class="thead-light">
 			                    <tr>
 				                    <!-- <th scope="col" class="sort" data-sort="id">Product ID</th> -->
@@ -122,6 +125,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 							                        $a=$b->A;
 				                              echo $a;
 				                            ?>
+				                        </span>    
 				                      </div>
 				                    </td> 
 				                    <td>
@@ -131,6 +135,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 							                        $bb=$b->B;
 				                              echo $bb;
 				                       ?>
+				                   </span>
 				                      </div>
 				                    </td> 
 				                    <td>
@@ -140,6 +145,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 							                        $c=$b->C;
 				                              echo $c;
 				                       ?>
+				                   </span>
 				                      </div>
 				                    </td> 
 				                    <td>
@@ -149,6 +155,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 							                        $d=$b->D;
 				                              echo $d;
 				                       ?>
+				                   </span>
 				                      </div>
 				                    </td> 
 				                    <td>
@@ -158,6 +165,7 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 							                        $e=$b->E;
 				                              echo $e;
 				                       ?>
+				                   </span>
 				                      </div>
 				                    </td> 
 				                    <td>
@@ -165,9 +173,9 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 				                        <span class="completion mr-2">
 
 				                       
-				                        <a href="vieweditproduct.php?action=1&id=<?php echo  $key['id'];?>" class="showtable">Edit</a>
-				                        <a onclick="javascript: return confirm('are you sure?');" href="viewproduct.php?id=<?php echo  $key['id'];?>" class="showtable">Delete</a>
-				                        </span>
+				                        <a href="vieweditproduct.php?action=1&id=<?php echo  $key['id'];?>" class="btn btn-primary">Edit</a>
+				                        <a onclick="javascript: return confirm('are you sure?');" href="viewproduct.php?id=<?php echo  $key['id'];?>" class=" btn btn-primary">Delete</a>
+				                        <!-- </span> -->
 				                        <div>
 				                          
 				                        </div>
@@ -180,13 +188,20 @@ if(isset($_GET['id'])&& !(isset($_GET['action'])))
 		                  </tbody>
 		                </table>
 		            </div>
-		          </div>
-		      </div>
-		  </div>
+		        </div>
+		    </div>
+		</div>    
+		  <!-- </div> -->
 	</div>	
 	
 
-</div>	
-<div class="mt-9">
+<div>	
+<!-- <div class="mt-9"> -->
+
+
 <?php include 'footer.php'; ?>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+
+
 </div>

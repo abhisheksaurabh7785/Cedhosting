@@ -1,6 +1,9 @@
 <?php
 require_once('Dbcon.php');
 include ('User.php'); 
+$user =new User();
+$dbcon =new dbconnection();
+$data = $user-> importcategory($dbcon-> conn);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -103,22 +106,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="wordpresshosting.php">WordPress Hosting</a></li>
 										<li><a href="windowshosting.php">Windows Hosting</a></li>
 										<li><a href="cmshosting.php">CMS Hosting</a></li> -->
-										<li><a href="<?php
-										
-                                        $user =new User();
-                                        $dbcon =new dbconnection();
-                                        $data = $user-> importcategory($dbcon-> conn);
-                                        foreach($data as $key=>$value){
-                                        	echo('<li href="'.$value['html'].'">'.$value['prod_name'].'</option>');
-                                        }
-										?></a></li>
-									</ul>			
+										<?php foreach($data as $key=>$value){ ?>
+										<li><a href="catpage.php?id=<?php echo $value['id'] ?>"><?php echo $value['prod_name']?></a></li>
+										<?php } ?>
+									</ul>	
+
 								</li>
+								<?php //echo $value['html'];?>
 								<li><a href="codes.php">Pricing</a></li>
 								<li><a href="contact.php">Blog</a></li>
 								<li><a href="contact.php">Contact</a></li>
 								<li><a href="contact.php"><i class="fas fa-shopping-cart "></i></a></li>
-								<li><a href="login.php">login</a></li>
+								<li>
+									<?php 
+									if(isset($_SESSION['NAME'])){
+									echo '<a href="logout.php">logout</a>';
+									}else{
+									echo '<a href="login.php">login</a>';
+									} ?>
+								</li>
 							</ul>
 									  
 						</div><!-- /.navbar-collapse -->

@@ -50,6 +50,13 @@
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"></script> -->
+<script>
+$(document).ready( function () {
+$('#product').DataTable();
+} );
+</script>
  
 
 </body>
