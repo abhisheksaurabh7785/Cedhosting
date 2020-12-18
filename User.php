@@ -322,6 +322,15 @@ class User{
 		}
 		return $row;
 	}
+	function addcart($id,$conn){
+		$row=array();
+		$sql= "SELECT a.*,b.* FROM `tbl_product` as a INNER JOIN `tbl_product_description` as b on a.`id`=b.`prod_id` WHERE a.`id`= '$id'";
+		$result=$conn->query($sql);
+		while($data=mysqli_fetch_assoc($result)){
+			$row[]=$data;
+		}
+		return $row;
+	}
 }
 
 ?>

@@ -39,10 +39,13 @@ if(isset($_GET['id']))
       
       <input type="text" class="form-control" id="pid" placeholder="Category Name" name="name">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
  
       <input type="text" class="form-control" id="plink" placeholder="Enter Product Link" name="plink">
-    </div>
+    </div> -->
+    <div class="form-group">
+         <textarea id="editor" name="plink"></textarea>
+      </div>
     
     <button type="submit" name="submit" value="Create Category" class="btn btn-default">Submit</button>
   </form>

@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li><a href="codes.php">Pricing</a></li>
 								<li><a href="contact.php">Blog</a></li>
 								<li><a href="contact.php">Contact</a></li>
-								<li><a href="contact.php"><i class="fas fa-shopping-cart "></i></a></li>
+								<li><a href="cart.php"><i class="fas fa-shopping-cart "></i></a></li>
 								<li>
 									<?php 
 									if(isset($_SESSION['NAME'])){

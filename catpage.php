@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 if(isset($_GET['id'])){
 	require ('header.php'); 
     $id = $_GET['id'];
@@ -46,7 +46,7 @@ if(isset($_GET['id'])){
 												</div>
 												<div class="linux-bottom">
 													<h5>$<?php echo $value2['mon_price'];?> <span class="month">per month</span></h5>
-													<h5>$<?php echo $value2['annual_price'];?> <span class="month">per month</span></h5>
+													<h5>$<?php echo $value2['annual_price'];?> <span class="month">per year</span></h5>
 													<h6><?php echo $domain;?> Domain</h6>
 													<ul>
 													<li><strong><?php echo $web;?>GB</strong> web Space</li>
@@ -56,20 +56,31 @@ if(isset($_GET['id'])){
 													<!-- <li><strong>High Performance</strong>  Servers</li> -->
 													<li><strong>location</strong> : <img src="images/india.png"></li>
 													</ul>
+													<?php $_GET['pid'] = $value2['prod_id'];
+													//echo $_GET['pid'];?>
+													
 												</div>
-												<a href="#">buy now</a>
+												<a href="insert.php?id=<?php echo $_GET['pid'] ?> ">buy now</a>
+																<!-- cart value -->
+
+
 											</div>
 											<?php } ?>
 											
 											<div class="clearfix"></div>
 										</div>
 									</div>
+
+
+									
 									<!-- <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
 										<div class="linux-prices">
 											<div class="col-md-3 linux-price">
 												<div class="linux-top us-top">
 												<h4>Standard</h4>
 												</div>
+												cart.php?id=<?php //echo $_GET['pid']?>
+
 												<div class="linux-bottom us-bottom">
 													<h5>$259 <span class="month">per month</span></h5>
 													<h6>Single Domain</h6>
@@ -95,10 +106,12 @@ if(isset($_GET['id'])){
 					<!-- clients -->
 
 
+
 	<?php require ('footer.php');
 }else{
 	echo "<script>window.location = 'index.php'</script>";
 }
 ?>
+
 
 

@@ -28,6 +28,9 @@
  	$Dbcon = new dbconnection();
  	$user=new User();
  	$sql= $user -> insertaddproduct($productcat,$productnam,$pageurl,$monthlypri,$annualpri,$sku,json_encode($a),$Dbcon-> conn);
+  if($sql=true){
+    echo "<script>alert('Category inserted successfully')</script>";
+  }
  }
  if(isset($_GET['id'])){
   $id=$_GET['id'];
