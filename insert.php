@@ -1,8 +1,10 @@
 <?php 
+ob_start();
 include ('header.php');
 									if(isset($_GET['id'])){
 										$id=$_GET['id'];
 										$_SESSION['insertid']=$id;
+										echo $_SESSION['catpage'];
 										//$user=new User();
 										//$data=array();
 										$data = $user -> addcart($id,$dbcon-> conn);
@@ -15,8 +17,8 @@ include ('header.php');
 											$_SESSION['cart']
 											= array_merge($_SESSION['cart'], $data);
 											}
-											//header('Location: catpage.php');
-											echo "<script>window.location.href='catpage.php'</script>";
+											header('Location: catpage.php?id='.$_SESSION['catpage']);
+											//echo "<script>window.location.href='catpage.php?id=".$_SESSION['catpage']."</script>";
 											
 
 

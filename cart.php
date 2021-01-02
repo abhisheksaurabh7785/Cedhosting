@@ -57,7 +57,7 @@ if(isset($_SESSION['insertid'])){
                     <td>
                       <!-- <span class="badge badge-dot mr-4"> -->
                         <!-- <i class="bg-warning"></i> -->
-                        <span class="status">pending</span>
+                        <span class="status">1</span>
                       </span>
                     </td>
                     <td class="budget">$

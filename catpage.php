@@ -1,7 +1,12 @@
 <?php
 //session_start();
+//18dec change
+
+
+//
 if(isset($_GET['id'])){
 	require ('header.php'); 
+	$_SESSION['catpage']=$_GET['id'];
     $id = $_GET['id'];
 	$user =new User();
 	$dbcon =new dbconnection();
@@ -60,12 +65,27 @@ if(isset($_GET['id'])){
 													//echo $_GET['pid'];?>
 													
 												</div>
-												<a href="insert.php?id=<?php echo $_GET['pid'] ?> ">buy now</a>
-																<!-- cart value -->
+												<!-- <div id="buy"> -->
+															<!-- <?php //foreach ($_SESSION['cart'] as $key => $value) {
+																//echo $value['prod_name'];
+															}	?>	 -->						<!-- </div> -->
+												<!-- <div id="gotocart"> -->
+												<!-- 	<?php //i//f(in_array($_GET['pid'], $_SESSION['cart'])){
+
+												//echo '<a href="cart.php" >go to cart</a>';}else{
+													//echo $_GET['pid'];
+													//echo $_SESSION['cart']['prod_id'];
+													//print_r( $_SESSION['cart']);
+													//echo "<a href='insert.php?id=". $_GET['pid']."'". ">buy now</a>";
+
+												}?> -->
+											<!-- </div> -->	
+											<a href="insert.php?id=<?php echo $_GET['pid'] ?> ">buy now</a>	
+													<!-- cart value -->
 
 
 											</div>
-											<?php } ?>
+									
 											
 											<div class="clearfix"></div>
 										</div>
@@ -104,12 +124,13 @@ if(isset($_GET['id'])){
 						</div>
 					</div>
 					<!-- clients -->
+					<!-- Error to be solved -->
 
 
 
 	<?php require ('footer.php');
-}else{
-	echo "<script>window.location = 'index.php'</script>";
+}}else{
+	echo "<script>window.location = 'catpage.php'</script>";
 }
 ?>
 
